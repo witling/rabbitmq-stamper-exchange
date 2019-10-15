@@ -8,7 +8,6 @@ defmodule RabbitExchangeTypeStamper do
     :rabbit_boot_step,
     accumulate: true, persist: true
 
-  @behaviour :rabbit_exchange_type
   @rabbit_boot_step [__MODULE__, [
     {:description, "exchange type stamper"},
     {:mfa,         {:rabbit_registry, :register,
@@ -17,11 +16,25 @@ defmodule RabbitExchangeTypeStamper do
     {:enables,      :kernel_ready}
   ]]
 
+  @behaviour :rabbit_exchange_type
+  @behaviour :rabbit_mgmt_extension
+
+  @impl :rabbit_exchange_type
   def description do
     [{:description, "the stamper exchange"}]
   end
+
+  @impl :rabbit_mgmt_extension
+  def dispatcher do
+    [{"/stamper", :rabbit_stamper_api, []}]
+  end
+
+  @impl :rabbit_mgmt_extension
+  def web_ui do
+    [{:javascript, "stamper.js"}]
+  end
   
-  def route(:exchange[name: x_name], delivery) do
+  def route(exchange, delivery) do
     []
   end
 
