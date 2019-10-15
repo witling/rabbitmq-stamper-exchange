@@ -1,4 +1,4 @@
-dispatcher_add(function(sammy) {
+dispatcher_add(function (sammy) {
     /*
     sammy.get('#/traces', function() {
             var nodes = JSON.parse(sync_get('/nodes'));
@@ -45,10 +45,9 @@ dispatcher_add(function(sammy) {
 
 NAVIGATION['Admin'][0]['Stamper'] = ['#/stamper', 'administrator'];
 
-//HELP['tracing-max-payload'] =
-    'Maximum size of payload to log, in bytes. Payloads larger than this limit will be truncated. Leave blank to prevent truncation. Set to 0 to prevent logging of payload altogether.';
+//HELP['tracing-max-payload'] = 'Maximum size of payload to log, in bytes. Payloads larger than this limit will be truncated. Leave blank to prevent truncation. Set to 0 to prevent logging of payload altogether.';
 
-$(document).on('change', 'select#traces-node', function() {
-    var url='#/traces/' + $(this).val();
+$(document).on('change', 'select#traces-node', function () {
+    var url = '#/traces/' + $(this).val();
     go_to(url);
 });
