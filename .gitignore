@@ -14,3 +14,5 @@ erl_crash.dump
 *.ez
 # Ignore package tarball (built via "mix hex.build").
 rabbitmq_stamper_exchange-*.tar
+# Don't save mix.lock
+mix.lock

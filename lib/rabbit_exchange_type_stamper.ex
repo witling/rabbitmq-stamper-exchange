@@ -17,11 +17,15 @@ defmodule RabbitExchangeTypeStamper do
     {:enables,      :kernel_ready}
   ]]
 
+  def say_hello do
+    IO.puts("hello world") 
+  end
+
   def description do
     [{:description, "the stamper exchange"}]
   end
   
-  def route(:exchange[name: x_name], delivery) do
+  def route(exchange, delivery) do
     []
   end
 
@@ -66,7 +70,8 @@ defmodule RabbitExchangeTypeStamper do
   end
 
   def assert_args_equivalence(x, args) do
-    :rabbit_exchange.assert_args_equivalence(x, args)
+    #:rabbit_exchange.assert_args_equivalence(x, args)
+    :ok
   end
 
 end
