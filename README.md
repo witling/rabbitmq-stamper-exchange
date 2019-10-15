@@ -4,17 +4,29 @@ A RabbitMQ exchange type that adds custom header attributes to each message that
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `rabbitmq_stamper_exchange` to your list of dependencies in `mix.exs`:
+Put the release archive aswell as a version of elixir into the RabbitMQ plugins folder (see [default environment variables](https://www.rabbitmq.com/configure.html#supported-environment-variables)) and issue:
 
-```elixir
-def deps do
-  [
-    {:rabbitmq_stamper_exchange, "~> 0.1.0"}
-  ]
-end
+``` bash
+rabbitmq-plugins enable rabbitmq_stamper_exchange
+rabbitmq-service stop
+rabbitmq-service start
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/rabbitmq_stamper_exchange](https://hexdocs.pm/rabbitmq_stamper_exchange).
+## Development
+
+Make sure you have the following dependencies installed:
+
+```
+git elixir
+```
+
+### Linux
+
+``` bash
+git clone https://github.com/witling/rabbitmq-stamper-exchange
+mix build
+```
+
+### Windows
+
+Well, [good luck](https://erlang.mk/guide/installation.html#_on_windows)...

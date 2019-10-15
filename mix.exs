@@ -4,17 +4,13 @@ defmodule RabbitExchangeTypeStamper.MixProject do
   def version, do: "1.0.0"
 
   def project do
-    dir = case System.get_env("DEPS_DIR") do
-      nil -> "deps"
-      dir -> dir
-    end
     [
       app: :rabbitmq_stamper_exchange,
       version: version(),
       elixir: "~> 1.9",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
-      deps: deps(dir),
+      deps: deps(),
       aliases: aliases(),
     ]
   end
@@ -27,21 +23,23 @@ defmodule RabbitExchangeTypeStamper.MixProject do
   end
 
   # Run "mix help deps" to learn about dependencies.
-  defp deps(dir) do
+  defp deps do
     [
       # We use `true` as the command to "build" rabbit_common and
       # amqp_client because Erlang.mk already built them.
       {
         :rabbit_common,
-        path: Path.join(dir, "rabbit_common"),
-        compile: "true",
-        override: true
+        github: "rabbitmq/rabbitmq-common",
+        app: false,
+        #compile: ":",
+        #override: true
       },
       {
         :rabbit,
-        path: Path.join(dir, "rabbit"),
-        compile: "true",
-        override: true
+        github: "rabbitmq/rabbitmq-server",
+        app: false,
+        #compile: ":",
+        #override: true
       },
     ]
   end
@@ -70,8 +68,8 @@ defmodule RabbitExchangeTypeStamper.MixProject do
     #Mix.Tasks.Archive.Build.run([])
     Mix.Tasks.Archive.Build.run(["--output=#{outdir}/rabbitmq_stamper_exchange.ez"])
     # overwrite old version with new build
-    File.cp("#{outdir}/rabbitmq_stamper_exchange.ez", "./archive/rabbitmq_stamper_exchange.ez")
+    #File.cp("#{outdir}/rabbitmq_stamper_exchange.ez", "./archive/rabbitmq_stamper_exchange.ez")
     # write current build to archive
-    File.rename("#{outdir}/rabbitmq_stamper_exchange-#{version()}.ez", "./archive/rabbitmq_stamper_exchange-#{version()}.ez")
+    #File.rename("#{outdir}/rabbitmq_stamper_exchange-#{version()}.ez", "./archive/rabbitmq_stamper_exchange-#{version()}.ez")
   end
 end
