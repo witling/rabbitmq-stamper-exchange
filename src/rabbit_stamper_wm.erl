@@ -12,7 +12,7 @@ content_types_provided(ReqData, Context) ->
    {[{<<"application/json">>, to_json}], ReqData, Context}.
 
 to_json(ReqData, Context) ->
-    List = []
+    List = [],
     rabbit_mgmt_util:reply(List, ReqData, Context).
 
 is_authorized(ReqData, Context) ->

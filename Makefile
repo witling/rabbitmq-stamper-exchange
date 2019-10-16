@@ -1,7 +1,7 @@
 PROJECT = rabbitmq_stamper_exchange
 PROJECT_DESCRIPTION = RabbitMQ Stamper Exchange
 
-DEPS = rabbit_common rabbit
+DEPS = rabbit_common rabbit rabbitmq_management
 TEST_DEPS = rabbitmq_ct_helpers rabbitmq_ct_client_helpers
 
 DEP_EARLY_PLUGINS = rabbit_common/mk/rabbitmq-early-plugin.mk

@@ -9,4 +9,4 @@ ebin/
 logs/
 plugins/
 
-*.d
+rabbitmq_stamper_exchange.d
