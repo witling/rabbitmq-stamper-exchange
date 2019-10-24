@@ -1,6 +1,6 @@
 # rabbitmq-stamper-exchange
 
-A RabbitMQ exchange type that adds custom header attributes to each message that passes it.
+**NOT WORKING!!!** A RabbitMQ exchange type that adds custom header attributes to each message that passes it.
 
 ## Installation
 
